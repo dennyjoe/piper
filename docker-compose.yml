@@ -1,0 +1,20 @@
+---
+services:
+  piper:
+    image: lscr.io/linuxserver/piper:latest
+    container_name: piper
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=$TZ
+      - PIPER_VOICE=$PIPER_VOICE
+      - PIPER_LENGTH=$PIPER_LENGTH #optional
+      - PIPER_NOISE=$PIPER_NOISE #optional
+      - PIPER_NOISEW=$PIPER_NOISEW #optional
+      - PIPER_SPEAKER=$PIPER_SPEAKER #optional
+      - PIPER_PROCS=$PIPER_PROCS #optional
+    volumes:
+      - "$INSTALL_DIR/config:/config"
+    ports:
+      - 10200:10200
+    restart: unless-stopped
